@@ -1,3 +1,4 @@
+using Explorer.API.Controllers.Proto;
 using Explorer.API.Middleware;
 using Explorer.API.Startup;
 using Microsoft.Extensions.FileProviders;
@@ -37,6 +38,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapGrpcService<AuthenticationProtoController>();
+app.MapGrpcService<UserProtoController>();
 app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();

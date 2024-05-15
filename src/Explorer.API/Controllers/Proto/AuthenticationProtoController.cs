@@ -27,4 +27,26 @@ public class AuthenticationProtoController : Authorize.AuthorizeBase
             AccessToken = result.Value.AccessToken,
         });
     }
+
+    public override Task<AuthenticationTokens> Register(AccountRegistration request,
+               ServerCallContext context)
+    {
+        var account = new AccountRegistrationDto
+        {
+            Email = request.Email,
+            Name = request.Name,
+            Password = request.Password,
+            Role = (UserRoleDto)request.Role,
+            Surname = request.Surname,
+            Username = request.Username
+        };
+
+        var result = _authenticationService.RegisterTourist(account);
+
+        return Task.FromResult(new AuthenticationTokens
+        {
+            Id = (int)result.Value.Id,
+            AccessToken = result.Value.AccessToken,
+        });
+    }
 }

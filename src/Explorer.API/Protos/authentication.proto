@@ -7,6 +7,16 @@ package Authorize;
 service Authorize {
   rpc Authorize (Credentials) returns (AuthenticationTokens) {
   }
+  rpc Register (AccountRegistration) returns (AuthenticationTokens) {
+  }
+}
+
+service UserService {
+  rpc GetById (UserIdRequest) returns (UserDto);
+}
+
+service PersonService {
+  rpc GetByUserId (PersonIdRequest) returns (PersonDto);
 }
 
 message Credentials {
@@ -17,4 +27,47 @@ message Credentials {
 message AuthenticationTokens {
   int32 Id = 1;
   string AccessToken = 2;
+}
+
+message AccountRegistration {
+  string Username = 1;
+  string Password = 2;
+  string Email = 3;
+  string Name = 4;
+  string Surname = 5;
+  UserRole Role = 6;
+}
+
+enum UserRole {
+  Administrator = 0;
+  Author = 1;
+  Tourist = 2;
+}
+
+message UserIdRequest {
+  int64 userId = 1;
+}
+
+message UserDto {
+  int64 Id = 1;
+  string Username = 2;
+  UserRole Role = 3;
+  bool IsActive = 4;
+}
+
+message PersonIdRequest {
+  int32 userId = 1;
+}
+
+message PersonDto {
+  int64 Id = 1;
+  int64 UserId = 2;
+  string Name = 3;
+  string Surname = 4;
+  string Email = 5;
+  string Motto = 6;
+  string Biography = 7;
+  string Image = 8;
+  double Latitude = 9;
+  double Longitude = 10;
 }
