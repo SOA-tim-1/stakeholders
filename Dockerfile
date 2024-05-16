@@ -7,6 +7,11 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 as build
 WORKDIR /src
+
+# Install protobuf compiler and C# plugin
+RUN apt-get update && apt-get install -y protobuf-compiler
+RUN dotnet tool install --global protobuf-net.Protogen
+
 COPY . .
 WORKDIR /src/src
 RUN dotnet restore Explorer.API/Explorer.API.csproj
