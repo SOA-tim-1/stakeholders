@@ -39,6 +39,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapGrpcService<AuthenticationProtoController>();
 app.MapGrpcService<UserProtoController>();
+app.MapGrpcService<PersonProtoController>();
 app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();
