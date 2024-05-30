@@ -11,7 +11,6 @@ builder.Services.ConfigureSwagger(builder.Configuration);
 const string corsPolicy = "_corsPolicy";
 builder.Services.ConfigureCors(corsPolicy);
 builder.Services.ConfigureAuth();
-builder.Services.AddHttpContextAccessor();
 
 builder.Services.RegisterModules();
 builder.Services.AddGrpc();
@@ -40,7 +39,6 @@ app.MapControllers();
 app.MapGrpcService<AuthenticationProtoController>();
 app.MapGrpcService<UserProtoController>();
 app.MapGrpcService<PersonProtoController>();
-app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();
 
