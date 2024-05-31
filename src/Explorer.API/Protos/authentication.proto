@@ -2,8 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "GrpcServiceTranscoding";
 
-package Authorize;
-
 service Authorize {
   rpc Authorize (Credentials) returns (AuthenticationTokens) {
   }

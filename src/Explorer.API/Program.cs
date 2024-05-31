@@ -29,6 +29,8 @@ else
     app.UseHsts();
 }
 
+app.UseMiddleware<GrpcLoggingMiddleware>();
+
 app.UseRouting();
 app.UseCors(corsPolicy);
 app.UseHttpsRedirection();
@@ -39,6 +41,8 @@ app.MapControllers();
 app.MapGrpcService<AuthenticationProtoController>();
 app.MapGrpcService<UserProtoController>();
 app.MapGrpcService<PersonProtoController>();
+
+app.MapGet("/", () => "Worker Process Name : " + System.Diagnostics.Process.GetCurrentProcess().ProcessName);
 
 app.Run();
 
