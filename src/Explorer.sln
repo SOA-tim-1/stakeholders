@@ -27,6 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Explorer.Stakeholders.Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Explorer.Stakeholders.Tests", "Modules\Stakeholders\Explorer.Stakeholders.Tests\Explorer.Stakeholders.Tests.csproj", "{63ECE080-ACAB-4719-8BED-281B877E084D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77FBC7E0-5FF7-49BE-87D5-143AADBA0012}"
+	ProjectSection(SolutionItems) = preProject
+		script.txt = script.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
